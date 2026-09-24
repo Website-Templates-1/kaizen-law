@@ -875,6 +875,32 @@ body {
   text-transform: uppercase;
   color: #a49c8b;
 }
+/* Below the two-column breakpoint the panel spans full width. Cap it to a tidy
+   portrait card, let it fit its content instead of a fixed 4:5 box, and stack
+   each stat (number over its label, centered) so the labels never wrap against
+   a wide empty gap the way the desktop ledger would at this width. */
+@media (max-width: 1023px) {
+  .firm-panel {
+    aspect-ratio: auto !important;
+    max-width: 460px;
+    margin-inline: auto;
+    padding: 44px 34px;
+  }
+  .firm-stat {
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 18px 0;
+  }
+  .firm-stat-value {
+    min-width: 0;
+  }
+  .firm-stat-label {
+    margin-left: 0;
+    max-width: none;
+    text-align: center;
+  }
+}
 
 /* Text-only home lawyer cards — no image slot. */
 .person--text {
