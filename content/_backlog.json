@@ -1,0 +1,39 @@
+{
+  "topics": [
+    {
+      "topic": "What a real estate lawyer does when you buy a home in Ontario",
+      "notes": "Walk a first-time buyer through the closing process: agreement review, title search, title insurance, working with the lender, closing day.",
+      "used": true
+    },
+    {
+      "topic": "Why every Ontario adult should have a will and power of attorney",
+      "notes": "What happens without a will (intestacy), what a POA for property and personal care does, and when to update them.",
+      "used": true
+    },
+    {
+      "topic": "Buying vs selling a home: the legal steps in a St. Catharines transaction",
+      "notes": "Compare the buyer side and seller side of a residential deal, searches, adjustments, and what can go wrong.",
+      "used": true
+    },
+    {
+      "topic": "Separation in Ontario: understanding the process before you start",
+      "notes": "Explain separation vs divorce, parenting and support basics, and how agreements are reached without adding conflict.",
+      "used": true
+    },
+    {
+      "topic": "Should you incorporate your Ontario business? A plain-language overview",
+      "notes": "Advantages and obligations of incorporating, the minute book, and coordinating with an accountant.",
+      "used": true
+    },
+    {
+      "topic": "Being named an executor in Ontario: where to start",
+      "notes": "The executor's duties, the order things happen, and when to get legal help with estate administration.",
+      "used": false
+    },
+    {
+      "topic": "What to do first if you have been charged with a criminal offence",
+      "notes": "The right to counsel, what to say and not say, bail basics, and the stages of a matter. General information only.",
+      "used": false
+    }
+  ]
+}

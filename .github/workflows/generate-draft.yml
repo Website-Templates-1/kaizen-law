@@ -1,0 +1,47 @@
+# Scheduled AI draft generation.
+#
+# Pings the deployed, secret-protected endpoint, which runs the same generation
+# module as the manual "Generate draft" button and commits the draft via the
+# GitHub API. The generated post lands as status:draft — nothing goes live until
+# the owner approves it in /admin.
+#
+# Required repo secrets (Settings → Secrets and variables → Actions):
+#   SITE_URL     e.g. https://www.kaizenlaw.ca  (or the Vercel preview URL).
+#                No trailing slash.
+#   CRON_SECRET  must exactly match the CRON_SECRET env var set on the host.
+name: Generate blog draft
+
+on:
+  schedule:
+    - cron: "0 13 * * 1" # Mondays 13:00 UTC — adjust to taste
+  workflow_dispatch: {} # lets you run it on demand from the Actions tab
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check required secrets
+        env:
+          SITE_URL: ${{ secrets.SITE_URL }}
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+        run: |
+          missing=0
+          [ -z "$SITE_URL" ]    && { echo "::error::SITE_URL secret is not set";    missing=1; }
+          [ -z "$CRON_SECRET" ] && { echo "::error::CRON_SECRET secret is not set"; missing=1; }
+          exit $missing
+
+      - name: Trigger generation endpoint
+        env:
+          SITE_URL: ${{ secrets.SITE_URL }}
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+        run: |
+          echo "POST ${SITE_URL%/}/api/admin/generate"
+          code=$(curl -sS -o /tmp/resp.json -w "%{http_code}" --max-time 120 \
+            -X POST "${SITE_URL%/}/api/admin/generate" \
+            -H "Authorization: Bearer $CRON_SECRET")
+          echo "HTTP $code"
+          echo "Response:"; cat /tmp/resp.json 2>/dev/null; echo
+          if [ "$code" -lt 200 ] || [ "$code" -ge 300 ]; then
+            echo "::error::Generation request failed (HTTP $code)"
+            exit 1
+          fi
