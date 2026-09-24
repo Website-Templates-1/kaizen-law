@@ -1,11 +1,11 @@
-import Link from "next/link";
 import { PageHero } from "@/components/sections/PageHero";
 import { CtaBand } from "@/components/sections/CtaBand";
-import { Portrait } from "@/components/media/Portrait";
+import { FoundersPanelSwitch } from "@/components/preview/FoundersPanelSwitch";
+import { PeopleProfilesSwitch } from "@/components/preview/PeopleProfilesSwitch";
 import { Container } from "@/components/ui/primitives";
 import { JsonLd, aboutPageSchema, breadcrumbSchema } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/seo";
-import { about, lawyers, practices } from "@/lib/site.config";
+import { about, lawyers, glance } from "@/lib/site.config";
 
 const crumbs = [
   { name: "Home", path: "/" },
@@ -23,13 +23,6 @@ const languages = Array.from(
   new Set(lawyers.flatMap((lawyer) => lawyer.languages)),
 );
 
-const glance = [
-  { label: "Lawyers", value: String(lawyers.length) },
-  { label: "Admissions", value: "Ontario" },
-  { label: "Languages", value: languages.join(", ") },
-  { label: "Focus areas", value: String(practices.length) },
-];
-
 export default function PeoplePage() {
   return (
     <>
@@ -43,7 +36,7 @@ export default function PeoplePage() {
         crumbs={crumbs}
         meta={[
           `${lawyers.length} lawyers`,
-          "Called in Ontario",
+          "Licensed in Ontario",
           languages.join(" · "),
         ]}
       />
@@ -73,17 +66,19 @@ export default function PeoplePage() {
                 </p>
               </div>
 
-              <dl className="mt-10 grid grid-cols-2 gap-x-8 gap-y-6 border-t border-line pt-8 sm:max-w-lg">
+              <ul className="mt-10 grid grid-cols-1 gap-x-8 gap-y-8 border-t border-line pt-8 sm:max-w-xl sm:grid-cols-3">
                 {glance.map((item) => (
-                  <div key={item.label} className="flex flex-col gap-1.5">
-                    <dt className="eyebrow text-muted">{item.label}</dt>
-                    <dd className="text-[15px] text-ink">{item.value}</dd>
-                  </div>
+                  <li key={item.label} className="flex flex-col gap-2">
+                    <span className="display text-[2.5rem] leading-none text-ink">
+                      {item.value}
+                    </span>
+                    <span className="eyebrow text-muted">{item.label}</span>
+                  </li>
                 ))}
-              </dl>
+              </ul>
             </div>
 
-            <Portrait
+            <FoundersPanelSwitch
               monogram="K"
               photo={about.teamPhoto}
               photoReady={about.teamPhotoReady}
@@ -99,69 +94,7 @@ export default function PeoplePage() {
       {/* Lawyer profiles */}
       <section className="bg-cream pb-24 sm:pb-32">
         <Container>
-          <div className="space-y-20 sm:space-y-28">
-            {lawyers.map((lawyer, i) => (
-              <article
-                key={lawyer.name}
-                className="grid items-start gap-10 border-t border-line pt-16 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16"
-              >
-                <div className={i % 2 === 1 ? "lg:order-2" : ""}>
-                  <Portrait
-                    monogram={lawyer.monogram}
-                    photo={lawyer.photo}
-                    photoReady={lawyer.photoReady}
-                    alt={`${lawyer.name}, ${lawyer.role} of Kaizen Law`}
-                    aspect="4 / 5"
-                    sizes="(min-width: 1024px) 34vw, 90vw"
-                  />
-                </div>
-
-                <div className={i % 2 === 1 ? "lg:order-1" : ""}>
-                  <p className="text-[11px] uppercase tracking-[0.16em] text-gold">
-                    {lawyer.role}
-                  </p>
-                  <h3 className="display mt-3 text-[2rem] text-ink sm:text-[2.5rem]">
-                    {lawyer.name}
-                  </h3>
-                  <p className="mt-3 text-[13px] tracking-[0.04em] text-muted">
-                    Called to the Ontario bar in {lawyer.called}
-                  </p>
-                  <div className="mt-6 max-w-xl space-y-4 text-lg leading-relaxed text-muted">
-                    {lawyer.bio.map((para) => (
-                      <p key={para}>{para}</p>
-                    ))}
-                  </div>
-
-                  <dl className="mt-8 grid gap-8 border-t border-line pt-8 sm:grid-cols-2">
-                    <div>
-                      <dt className="eyebrow text-gold">Practice</dt>
-                      <dd className="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-ink">
-                        {lawyer.practice.map((item) => (
-                          <Link
-                            key={item.slug}
-                            href={`/practice/${item.slug}`}
-                            className="underline decoration-line underline-offset-4 hover:text-gold hover:decoration-gold"
-                          >
-                            {item.label}
-                          </Link>
-                        ))}
-                      </dd>
-                    </div>
-                    <div>
-                      <dt className="eyebrow text-gold">Languages</dt>
-                      <dd className="mt-3 text-ink">{lawyer.languages.join(", ")}</dd>
-                    </div>
-                    <div>
-                      <dt className="eyebrow text-gold">Admissions</dt>
-                      <dd className="mt-3 text-ink">
-                        {lawyer.jurisdiction}, {lawyer.called}
-                      </dd>
-                    </div>
-                  </dl>
-                </div>
-              </article>
-            ))}
-          </div>
+          <PeopleProfilesSwitch />
         </Container>
       </section>
 

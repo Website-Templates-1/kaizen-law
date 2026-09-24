@@ -158,7 +158,7 @@ function personSchema(lawyer: Lawyer) {
     hasCredential: {
       "@type": "EducationalOccupationalCredential",
       credentialCategory: "license",
-      name: `Called to the ${lawyer.jurisdiction} bar (${lawyer.called})`,
+      name: `Licensed to practise law in ${lawyer.jurisdiction}`,
     },
     ...(lawyer.photoReady ? { image: absoluteUrl(lawyer.photo) } : {}),
   };

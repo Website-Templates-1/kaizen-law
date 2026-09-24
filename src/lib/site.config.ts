@@ -516,10 +516,8 @@ export interface Lawyer {
   name: string;
   role: "Founder" | "Co-Founder";
   monogram: string;
-  called: number;
   jurisdiction: string;
   languages: string[];
-  practice: { label: string; slug: string }[];
   /** One-line summary for compact cards. */
   summary: string;
   /** Full bio paragraphs for the profile. DRAFT copy — pending each lawyer's approval. */
@@ -535,18 +533,13 @@ export const lawyers: Lawyer[] = [
     name: "Gourav Sharma",
     role: "Founder",
     monogram: "GS",
-    called: 2026,
     jurisdiction: "Ontario",
     languages: ["English", "Punjabi", "Hindi", "Urdu"],
-    practice: [
-      { label: "Criminal Law", slug: "criminal-law" },
-      { label: "Family Law", slug: "family-law" },
-    ],
     summary:
-      "Called to the Ontario bar in 2026, Gourav advises on criminal and family law with a calm, focused approach when the stakes are highest.",
+      "A founder of Kaizen Law, Gourav brings a calm, focused approach to every matter, and steady counsel when the stakes are highest.",
     bio: [
-      "Gourav Sharma is a founder of Kaizen Law, where he focuses his practice on criminal law and family law, the areas where clear, steady counsel matters most. He is drawn to the work precisely because it meets people at difficult moments, and he believes the first thing a client deserves is an honest explanation of where they stand.",
-      "Called to the Ontario bar in 2026, Gourav brings careful preparation and a composed presence to every matter, whether he is advising on a charge or helping a family work through a sensitive issue. He speaks English, Punjabi, Hindi, and Urdu, and takes pride in making sure clients understand every decision that affects them.",
+      "Gourav Sharma is a founder of Kaizen Law. He is drawn to the work precisely because it meets people at difficult moments, and he believes the first thing a client deserves is an honest explanation of where they stand.",
+      "He brings careful preparation and a composed presence to every matter, and takes the time to make sure clients understand every decision that affects them. He speaks English, Punjabi, Hindi, and Urdu.",
     ],
     photo: "/photos/gourav-sharma.jpg",
     photoReady: false,
@@ -555,27 +548,24 @@ export const lawyers: Lawyer[] = [
     name: "Nitika Thapar",
     role: "Co-Founder",
     monogram: "NT",
-    called: 2025,
     jurisdiction: "Ontario",
     languages: ["English", "Punjabi", "Hindi"],
-    practice: [
-      { label: "Real Estate", slug: "real-estate" },
-      { label: "Wills & Estates", slug: "wills-estates" },
-      { label: "Business", slug: "business" },
-      { label: "Corporate", slug: "corporate" },
-      { label: "Family Law", slug: "family-law" },
-    ],
     summary:
-      "Called to the Ontario bar in 2025, Nitika advises across real estate, wills and estates, business, corporate, and family law.",
+      "A co-founder of Kaizen Law, Nitika is known for translating complex matters into clear, practical guidance her clients can act on with confidence.",
     bio: [
-      "Nitika Thapar is a co-founder of Kaizen Law, with a practice spanning real estate, wills and estates, business, corporate, and family law. Clients come to her for the moments that shape a life or a business: buying a home, planning an estate, or formalizing a partnership. She brings the same precision and care to each one.",
-      "Called to the Ontario bar in 2025, Nitika is known for translating complex matters into plain, practical guidance her clients can act on with confidence. She speaks English, Punjabi, and Hindi, and is committed to counsel that is responsive, thorough, and genuinely shaped around each client's objectives.",
+      "Nitika Thapar is a co-founder of Kaizen Law. Clients come to her for the moments that shape a life or a business, and she brings the same precision and care to each one.",
+      "She is known for turning complex matters into plain, practical guidance, and for counsel that is responsive, thorough, and genuinely shaped around each client's objectives. She speaks English, Punjabi, and Hindi.",
     ],
     photo: "/photos/nitika-thapar.jpg",
     photoReady: false,
   },
 ];
 
+export const glance = [
+  { value: "4+", label: "Years of experience" },
+  { value: "95%", label: "Client satisfaction rate" },
+  { value: "24h", label: "Response time with new clients" },
+];
 export interface NavItem {
   label: string;
   href: string;

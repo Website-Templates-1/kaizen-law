@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { Enquiry } from "@/components/sections/Enquiry";
 import { Reviews } from "@/components/sections/Reviews";
-import { LawyerCards } from "@/components/sections/LawyerCards";
 import { PracticeList } from "@/components/sections/PracticeList";
-import { Portrait } from "@/components/media/Portrait";
+import { FoundersPanelSwitch } from "@/components/preview/FoundersPanelSwitch";
+import { LawyerCardsSwitch } from "@/components/preview/LawyerCardsSwitch";
 import { GoldButton, SectionIndex, TextLink } from "@/components/ui/primitives";
 import { buildMetadata } from "@/lib/seo";
 import { about, contact, philosophy, site } from "@/lib/site.config";
@@ -67,7 +67,7 @@ export default function HomePage() {
       <section className="section-light" id="about" style={{ paddingTop: 0 }}>
         <SectionIndex n="02" label={about.eyebrow} />
         <div className="grid gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:items-center lg:gap-16">
-          <Portrait
+          <FoundersPanelSwitch
             monogram="K"
             photo={about.teamPhoto}
             photoReady={about.teamPhotoReady}
@@ -121,7 +121,7 @@ export default function HomePage() {
             trust.
           </p>
         </div>
-        <LawyerCards />
+        <LawyerCardsSwitch />
       </section>
 
       {/* Reviews — renders only when live/approved reviews exist */}

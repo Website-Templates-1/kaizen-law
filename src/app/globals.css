@@ -759,6 +759,214 @@ body {
 }
 
 /* ------------------------------------------------------------------ *
+ * Preview: text-only design (client walkthrough aid)
+ * See src/components/preview/*. Remove with the PreviewProvider.
+ * ------------------------------------------------------------------ */
+/* Firm credential panel — fills the founders-photo slot in text mode. */
+.firm-panel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 0.86;
+  padding: clamp(28px, 4vw, 44px);
+  background:
+    radial-gradient(130% 90% at 50% -10%, rgba(189, 151, 76, 0.12), transparent 62%),
+    linear-gradient(158deg, #1f1e1a 0%, #17161300 40%),
+    linear-gradient(155deg, #1c1b18 0%, #151513 58%, #0f0e0c 100%);
+  color: var(--stone);
+  overflow: hidden;
+}
+.firm-panel::before {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border: 1px solid rgba(189, 151, 76, 0.45);
+  pointer-events: none;
+}
+.firm-panel::after {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border: 1px solid rgba(189, 151, 76, 0.14);
+  pointer-events: none;
+}
+.firm-panel-glow {
+  position: absolute;
+  top: -30%;
+  left: 50%;
+  width: 78%;
+  height: 60%;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse at center, rgba(214, 182, 108, 0.16), transparent 70%);
+  pointer-events: none;
+}
+.firm-panel-inner {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  max-width: 320px;
+}
+.firm-panel-kanji {
+  font-family: var(--serif);
+  font-size: clamp(38px, 5vw, 46px);
+  line-height: 1;
+  color: var(--gold-light);
+  margin: 0 0 12px;
+  letter-spacing: 0.12em;
+  text-shadow: 0 0 34px rgba(214, 182, 108, 0.3);
+}
+.firm-panel-word {
+  font-family: var(--serif);
+  font-size: clamp(26px, 3.4vw, 31px);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0 0 16px;
+}
+.firm-panel-rule {
+  display: block;
+  width: 38px;
+  height: 1px;
+  margin: 0 auto 18px;
+  background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+}
+.firm-panel-meaning {
+  color: #cbc4b6;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0 auto 26px;
+  max-width: 24em;
+}
+.firm-panel-stats {
+  margin: 0;
+  border-top: 1px solid rgba(189, 151, 76, 0.26);
+  text-align: left;
+}
+.firm-stat {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 14px 2px;
+}
+.firm-stat + .firm-stat {
+  border-top: 1px solid rgba(189, 151, 76, 0.14);
+}
+.firm-stat-value {
+  order: 0;
+  margin: 0;
+  min-width: 2.6em;
+  font-family: var(--serif);
+  font-size: 30px;
+  line-height: 1;
+  color: var(--gold-light);
+  font-variant-numeric: tabular-nums;
+}
+.firm-stat-label {
+  order: 1;
+  margin-left: auto;
+  max-width: 9em;
+  text-align: right;
+  font-family: var(--sans);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: #a49c8b;
+}
+
+/* Text-only home lawyer cards — no image slot. */
+.person--text {
+  border-top: 1px solid var(--line);
+  padding-top: 28px;
+}
+.person-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  font-family: var(--serif);
+  font-size: 19px;
+  color: var(--gold);
+  margin-bottom: 22px;
+}
+.person-summary {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.7;
+  margin: 12px 0 4px;
+  max-width: 34em;
+}
+
+/* Text-only People-page profiles — single-column editorial. */
+.profile-text-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 26px;
+}
+.profile-text-initial {
+  flex: none;
+  font-family: var(--serif);
+  font-size: 64px;
+  line-height: 0.9;
+  color: var(--gold);
+  font-style: italic;
+}
+
+/* Floating preview toggle. */
+.preview-toggle {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--ink);
+  color: var(--stone);
+  border-radius: 999px;
+  padding: 8px 14px 8px 16px;
+  box-shadow: 0 8px 24px rgba(21, 21, 19, 0.3);
+}
+.preview-toggle-label {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(242, 240, 235, 0.7);
+}
+.preview-toggle-group {
+  display: inline-flex;
+  gap: 2px;
+  background: rgba(242, 240, 235, 0.1);
+  border-radius: 999px;
+  padding: 3px;
+}
+.preview-toggle-group button {
+  font-family: var(--sans);
+  font-size: 11.5px;
+  border: none;
+  background: transparent;
+  color: rgba(242, 240, 235, 0.72);
+  padding: 6px 13px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s;
+}
+.preview-toggle-group button.is-active {
+  background: var(--gold);
+  color: var(--ink);
+}
+.preview-toggle-group button:focus-visible {
+  outline: 2px solid var(--gold-light);
+  outline-offset: 2px;
+}
+
+/* ------------------------------------------------------------------ *
  * Locations (gold)
  * ------------------------------------------------------------------ */
 .location-layout {
