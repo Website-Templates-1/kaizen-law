@@ -28,28 +28,25 @@ export function usePreviewMode(): PreviewMode {
   return useContext(PreviewContext);
 }
 
-/** Reads the URL query without tripping hydration — server sees "", client the real value. */
-function usePreviewParam() {
+/** Initial mode from the URL, without tripping hydration — server sees "", client the real value. */
+function useUrlMode(): PreviewMode {
   const search = useSyncExternalStore(
     () => () => {},
     () => window.location.search,
     () => "",
   );
-  const params = new URLSearchParams(search);
-  const active = params.has("preview");
-  const urlMode: PreviewMode = params.get("preview") === "text" ? "text" : "photos";
-  return { active, urlMode };
+  return new URLSearchParams(search).get("preview") === "text" ? "text" : "photos";
 }
 
 export function PreviewProvider({ children }: { children: ReactNode }) {
-  const { active, urlMode } = usePreviewParam();
+  const urlMode = useUrlMode();
   const [override, setOverride] = useState<PreviewMode | null>(null);
   const mode = override ?? urlMode;
 
   return (
     <PreviewContext.Provider value={mode}>
       {children}
-      {active && <PreviewToggle mode={mode} onChange={setOverride} />}
+      <PreviewToggle mode={mode} onChange={setOverride} />
     </PreviewContext.Provider>
   );
 }
