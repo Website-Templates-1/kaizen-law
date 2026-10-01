@@ -84,7 +84,6 @@ export function legalServiceSchema() {
       "@type": "Person",
       name: lawyer.name,
       jobTitle: lawyer.role,
-      knowsLanguage: [...lawyer.languages],
     })),
     ...(socialProfiles.length ? { sameAs: socialProfiles } : {}),
   };
@@ -154,7 +153,6 @@ function personSchema(lawyer: Lawyer) {
       name: site.legalName,
       url: site.domain,
     },
-    knowsLanguage: [...lawyer.languages],
     hasCredential: {
       "@type": "EducationalOccupationalCredential",
       credentialCategory: "license",

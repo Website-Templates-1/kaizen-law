@@ -16,7 +16,7 @@ export const site = {
   defaultTitle: "Kaizen Law | Clear counsel. Steady direction.",
   titleTemplate: "%s | Kaizen Law",
   defaultDescription:
-    "Kaizen Law Professional Corporation provides thoughtful, practical legal counsel in real estate, wills and estates, business, corporate, family, and criminal matters across the GTA and Niagara.",
+    "Kaizen Law Professional Corporation provides thoughtful, practical legal counsel in real estate, wills and estates, business and corporate law, family law, criminal law, and civil litigation across the GTA and Niagara.",
   ogImage: "/photos/hero.jpg",
   logo: "/brand/logo.png",
   studio: {
@@ -49,13 +49,15 @@ export const contact = {
     "Information requests are answered by email. Please share a little about your matter and we will be in touch.",
   mapUrl:
     "https://www.google.com/maps/search/?api=1&query=43+Church+Street+Suite+504+St.+Catharines+ON+L2R+7E1",
+  /** Lead line for the "where we work" sections. */
+  areasLead: "Serving clients across the Greater Toronto Area and Niagara Region.",
   /** Cities and regions named by the firm. Niagara is a region, not a city. */
   areas: [
-    { name: "Toronto", type: "City" },
     { name: "Brampton", type: "City" },
     { name: "Mississauga", type: "City" },
-    { name: "St. Catharines", type: "City" },
+    { name: "Toronto", type: "City" },
     { name: "Hamilton", type: "City" },
+    { name: "St. Catharines", type: "City" },
     { name: "Niagara", type: "AdministrativeArea" },
   ],
   /**
@@ -120,9 +122,8 @@ export const about = {
   title: "A boutique practice,",
   titleEm: "built around you.",
   paragraphs: [
-    "Kaizen Law Professional Corporation is a boutique firm serving individuals, families, and businesses across the Greater Toronto Area and the Niagara region. We handle real estate, wills and estates, business and corporate matters, family law, and criminal law. We bring the same care to a first home purchase as we do to a complex commercial file.",
-    "Because we are small by design, you work directly with the lawyer handling your matter. There is no rotating team and no handing your file down the line. That means advice that is consistent, responsive, and answerable to you from the first conversation to the last.",
-    "We speak English, Punjabi, Hindi, and Urdu, so more of our community can be understood in their own words, and be certain they understand every decision that affects them.",
+    "Kaizen Law Professional Corporation is a boutique firm serving individuals, families, and businesses across the Greater Toronto Area and the Niagara region. We handle real estate, wills and estates, business and corporate law, family law, criminal law, and civil litigation. We bring the same care to a first home purchase as we do to a complex commercial file.",
+    "Because we are small by design, you work directly with the lawyer handling your matter, with a direct line of communication throughout your file.",
   ],
   /** Intended source for the "both founders together" photograph. */
   teamPhoto: "/photos/founders.jpg",
@@ -132,9 +133,25 @@ export const about = {
   teamPhotoReady: false,
 } as const;
 
+/** Short "Why Kaizen?" note, shown on the home page. */
+export const whyKaizen = {
+  eyebrow: "Why Kaizen?",
+  title: "The person behind",
+  titleEm: "the matter.",
+  body: "We believe good legal service starts with understanding the person behind the matter. Our practice is intentionally focused, allowing us to work closely with our clients and approach each file with care, preparation and attention to detail.",
+} as const;
+
 /** Shown on practice pages and the contact form. Not legal advice, and not a retainer. */
 export const engagementNote =
   "Sending a message does not create a lawyer-client relationship. Please avoid sensitive details until we confirm we can act for you. Information on this site is general, not legal advice.";
+
+/** Full disclaimer shown at the bottom of the home page only. */
+export const homeDisclaimer =
+  "Sending a message does not create a lawyer-client relationship. Please avoid including confidential or sensitive information until we have confirmed that we can act for you. Information on this website is provided for general information only and does not constitute legal advice.";
+
+/** Short confidentiality warning shown directly above the contact form. */
+export const contactFormWarning =
+  "Please do not include confidential or sensitive information. Submitting this form does not create a lawyer-client relationship.";
 
 export const lsoNote = "Not an LSO Certified Specialist.";
 
@@ -152,271 +169,112 @@ export interface PracticeArea {
   includedHeading: string;
   /** Matters already described by the firm — not a fee schedule and not a results claim. */
   points: string[];
-  /** "This may be a fit if…" — situations the area speaks to. */
-  whoFor: string[];
   /** Plain-language questions and answers. Visible copy only — no FAQPage schema. */
   faqs: { q: string; a: string }[];
   image: string;
   imageAlt: string;
 }
 
-/**
- * Firm-wide engagement steps, shown on every practice page under "How we work".
- * Kept general on purpose: the same measured process applies to every matter.
- */
-export const engagementSteps: { title: string; body: string }[] = [
-  {
-    title: "First conversation",
-    body: "You tell us what you are facing. We listen, ask the questions that matter, and give you an honest read on where things stand.",
-  },
-  {
-    title: "A clear plan",
-    body: "We set out the options, the likely path, and what each step involves, in plain language, before any work begins.",
-  },
-  {
-    title: "Considered work",
-    body: "We handle the drafting, filing, and negotiation with precision, and keep you informed at every point that calls for a decision.",
-  },
-  {
-    title: "A clean resolution",
-    body: "We see the matter through to a clear conclusion and make sure you understand what it means and what, if anything, comes next.",
-  },
-];
-
+/** Practice areas, listed in alphabetical order by title. */
 export const practices: PracticeArea[] = [
   {
-    slug: "real-estate",
+    slug: "business-corporate",
     number: "01",
-    title: "Real Estate",
-    navLabel: "Real Estate",
+    title: "Business & Corporate Law",
+    navLabel: "Business & Corporate",
     metaDescription:
-      "Real estate counsel for purchases, sales, refinancing, and the decisions that shape property ownership. Kaizen Law, St. Catharines.",
+      "Business and corporate counsel for founders and companies: contracts, structure, shareholder arrangements, incorporation, and transactions. Kaizen Law, Ontario.",
     summary:
-      "Practical guidance for purchases, sales, refinancing, and the decisions that shape property ownership.",
+      "Practical counsel for founders and companies on contracts, structure, ownership, and the decisions that shape a business.",
     intro:
-      "A property transaction is often the largest one a person makes, and it turns entirely on the details: what is being bought or sold, what the agreement actually says, and what you need the deal to do for you. We explain those details in plain language and keep the path to closing clear from the first review to the final key handover.",
+      "Running a business involves decisions that can have lasting legal and practical consequences. Whether you are starting a new venture, bringing in a business partner, entering into an agreement, or changing the way your business is structured, having the right legal framework in place can make those decisions easier to navigate.",
     overview: [
-      "Whether you are buying your first home, selling a property, or refinancing to free up equity, the legal side should feel steady rather than stressful. We review your agreement of purchase and sale, conduct the searches that protect you, coordinate with your lender and the other side, and make sure title transfers cleanly and on time.",
-      "We also advise on the decisions that come with ownership, including how to hold title, what a survey or status certificate is telling you, and what to watch for before you sign. The aim is simple: no surprises on closing day, and a clear understanding of what you own and what you have committed to.",
+      "We work with business owners at different stages of their businesses. Our work may include helping establish or restructure a business, preparing and reviewing shareholder or partnership agreements, negotiating and drafting commercial contracts, and assisting with the purchase or sale of a business.",
+      "As a business develops, its legal needs can change as well. New owners, new arrangements, changes in operations, or a sale of the business may require existing agreements and corporate documents to be revisited. We help clients understand those changes and put the appropriate documentation in place for the circumstances.",
+      "Our approach is practical and straightforward: understand the business, identify the legal considerations, and provide advice you can use to make informed decisions.",
     ],
     includedHeading: "What this can include",
     points: [
-      "Residential and commercial purchases and sales",
-      "Refinancing and mortgage instructions",
-      "Title review, searches, and title insurance",
-      "Advice on how to hold and transfer title",
-      "Reviewing agreements before you commit",
-    ],
-    whoFor: [
-      "First-time buyers who want the process explained clearly",
-      "Owners selling or refinancing a home or investment property",
-      "Buyers and sellers of commercial or rental property",
-      "Anyone who wants an agreement reviewed before signing",
+      "Business purchases and sales",
+      "Business formation and structuring",
+      "Shareholder and partnership agreements",
+      "Commercial contracts and agreements",
+      "Corporate records and changes",
+      "Corporate reorganizations and share transactions",
+      "Incorporation and corporate structuring",
     ],
     faqs: [
       {
-        q: "When should I involve a lawyer in my purchase or sale?",
-        a: "As early as possible, ideally before you sign the agreement of purchase and sale, or during any conditional period. Reviewing the agreement early lets us flag issues while there is still room to address them.",
+        q: "Should I have a contract reviewed before signing?",
+        a: "It can be helpful to have significant agreements reviewed before you sign them, particularly where the agreement involves substantial financial commitments, ongoing obligations, or important business relationships. We can review the terms, explain the legal considerations, and identify provisions that may warrant further discussion or negotiation.",
       },
       {
-        q: "What do you do between the agreement and closing?",
-        a: "We conduct title and off-title searches, review the terms, coordinate with your lender and the other party's lawyer, prepare the closing documents, and arrange the transfer of funds and title so closing happens on schedule.",
+        q: "Can you help me set up a partnership or shareholder arrangement?",
+        a: "Yes. We can assist with preparing partnership or shareholder agreements that set out the agreed arrangements between the parties. Depending on the circumstances, an agreement may address matters such as decision-making, ownership, responsibilities, and what happens if circumstances change.",
       },
       {
-        q: "Do I need title insurance?",
-        a: "In most residential transactions it is standard and we will explain what it covers and why it is recommended for your situation. We will make sure you understand the cost and the protection before anything is arranged.",
-      },
-    ],
-    image: "/photos/real-estate.jpg",
-    imageAlt: "A modern house exterior in warm light",
-  },
-  {
-    slug: "wills-estates",
-    number: "02",
-    title: "Wills & Estates",
-    navLabel: "Wills & Estates",
-    metaDescription:
-      "Wills and estates counsel for planning and administration. Kaizen Law Professional Corporation, serving Ontario clients.",
-    summary:
-      "Thoughtful planning and administration designed to protect what matters and clarify what comes next.",
-    intro:
-      "Estate work is about making the next step understandable, for you and for the people who matter to you. Whether you are planning ahead or stepping in to administer what someone has left behind, we focus on clarity, so everyone involved knows exactly what the documents do and what happens next.",
-    overview: [
-      "Good planning is an act of care. A well-drafted will, power of attorney, and estate plan spare your family from uncertainty at the hardest possible time. We help you put your wishes in writing (who inherits, who decides, and who acts on your behalf if you cannot) in language that will hold up when it matters.",
-      "When you are the one administering an estate, the responsibilities can feel overwhelming. We guide executors and family members through the process step by step, from the initial paperwork to the final distribution, so the estate is handled correctly and the people involved are never left guessing.",
-    ],
-    includedHeading: "What this can include",
-    points: [
-      "Wills that put your wishes clearly in writing",
-      "Powers of attorney for property and personal care",
-      "Estate planning tailored to your family and assets",
-      "Guidance for executors and estate trustees",
-      "Estate administration from start to distribution",
-    ],
-    whoFor: [
-      "Anyone without an up-to-date will or power of attorney",
-      "Parents and families planning for what comes next",
-      "Executors who need a clear path through their duties",
-      "Families administering the estate of someone who has passed",
-    ],
-    faqs: [
-      {
-        q: "Do I really need a will if my estate is simple?",
-        a: "Yes. Without a will, Ontario law decides who inherits and who administers your estate, which may not reflect your wishes. Even a straightforward estate is far easier on your family when your intentions are clearly documented.",
+        q: "Do you work with new and early-stage businesses?",
+        a: "Yes. We work with businesses at different stages, including those that are just getting started. Depending on your circumstances, we can assist with matters such as business structure, agreements between owners, commercial contracts, and other legal documentation as the business develops.",
       },
       {
-        q: "What is a power of attorney, and do I need one?",
-        a: "A power of attorney lets someone you trust make decisions about your property or personal care if you become unable to. It is a core part of a complete plan, and we usually prepare it alongside your will.",
-      },
-      {
-        q: "I have been named an executor. Where do I start?",
-        a: "Start with a conversation. We will walk you through your responsibilities, the documents you need, and the order in which things happen, so you can carry out the role with confidence and without missteps.",
-      },
-    ],
-    image: "/photos/wills.jpg",
-    imageAlt: "A fountain pen writing on paper",
-  },
-  {
-    slug: "business",
-    number: "03",
-    title: "Business",
-    navLabel: "Business",
-    metaDescription:
-      "Business law support for founders and companies navigating agreements, growth, and change. Kaizen Law, Ontario.",
-    summary:
-      "Clear legal support for founders and businesses navigating agreements, growth, and change.",
-    intro:
-      "Founders and business owners come to us when an agreement, a period of growth, or a change in the business needs a steady, informed read. We look at the objective first and the paperwork second, because the document only matters if it does what your business actually needs it to do.",
-    overview: [
-      "Running a business means making decisions that carry legal weight, often under time pressure. We help you get those decisions right: reviewing and drafting the contracts you rely on, advising on how to structure a new venture or partnership, and making sure the agreements you sign protect the business you are building.",
-      "As things change, whether a new partner, a new location, or a new line of work, we help you document that change cleanly, so growth strengthens the business rather than exposing it. Practical advice, delivered in language you can act on.",
-    ],
-    includedHeading: "What this can include",
-    points: [
-      "Reviewing and drafting commercial contracts",
-      "Partnership and shareholder arrangements",
-      "Structuring a new business or venture",
-      "Documenting growth, partners, and change",
-      "Everyday agreements that deserve a careful read",
-    ],
-    whoFor: [
-      "Founders setting up or formalizing a new business",
-      "Owners entering a partnership or bringing one on",
-      "Businesses signing contracts they want reviewed first",
-      "Companies documenting a change or period of growth",
-    ],
-    faqs: [
-      {
-        q: "Should I have every contract reviewed before signing?",
-        a: "For anything significant, such as a lease, a supplier agreement, a partnership, or a large customer contract, then yes. A short review before you sign is far less costly than untangling a problem afterward.",
-      },
-      {
-        q: "Can you help me set up a partnership the right way?",
-        a: "We can. A clear partnership or shareholder arrangement, agreed while everyone is aligned, protects the relationship and the business if circumstances change later. We help you put that foundation in place.",
-      },
-      {
-        q: "Do you work with early-stage businesses?",
-        a: "Yes. We work with founders from day one as well as established businesses. We will meet you where you are and scale the advice to what the business actually needs right now.",
+        q: "Should I incorporate my business?",
+        a: "Incorporation may be appropriate depending on your business, how it is structured, and your plans for the future. We can explain the legal considerations involved in incorporating and the ongoing corporate requirements, so you can make an informed decision about the structure that suits your circumstances. If you decide to incorporate, we can assist with the incorporation process and related documentation.",
       },
     ],
     image: "/photos/business.jpg",
     imageAlt: "A modern office corridor",
   },
   {
-    slug: "corporate",
-    number: "04",
-    title: "Corporate",
-    navLabel: "Corporate",
+    slug: "civil-litigation",
+    number: "02",
+    title: "Civil Litigation",
+    navLabel: "Civil Litigation",
     metaDescription:
-      "Corporate counsel for structures, transactions, governance, and ongoing obligations. Kaizen Law Professional Corporation.",
+      "Civil litigation counsel for contract, property, debt, construction, shareholder, and estate disputes. Kaizen Law, serving the GTA and Niagara.",
     summary:
-      "Strategic counsel for corporate structures, transactions, governance, and ongoing obligations.",
+      "Clear, practical representation in disputes over contracts, property, debts, construction, and estates.",
     intro:
-      "Corporate work covers how an organization is put together, how a transaction is documented, and what the ongoing obligations are once the ink is dry. We keep that whole picture orderly, so your structure supports your goals and your records stay in good standing.",
+      "Civil disputes can affect your business, property, finances, and relationships, often at a time when the legal issues are already difficult to navigate. We help clients understand the dispute, the issues involved, and the options available to them.",
     overview: [
-      "From incorporation to reorganization, the way a company is structured has real consequences for how it operates, how it is taxed, and how it grows. We advise on the structure that fits your objectives, prepare the documents that put it in place, and make sure transactions are recorded properly.",
-      "We also help with the ongoing side of corporate life: governance, resolutions, minute books, and the routine obligations that are easy to let slip and costly to ignore. The result is a company whose paperwork matches its reality and whose foundations are ready for whatever comes next.",
+      "Our work may involve contractual and commercial disputes, real estate and property matters, construction and lien issues, mortgage enforcement, debt recovery, shareholder disputes, and estate and trust litigation. We assess the circumstances of each matter carefully and advise on the legal and practical considerations that may arise.",
+      "Where a dispute can be addressed through negotiation or another form of resolution, we can assist with that process. Where litigation or a court application is required, we can advise you on the applicable procedure and represent you through the relevant stages of the matter.",
+      "Our approach is focused and practical: understand the dispute, identify the issues that matter, and provide advice that allows you to make informed decisions about how to proceed.",
     ],
     includedHeading: "What this can include",
     points: [
-      "Incorporation and corporate structuring",
-      "Reorganizations and share transactions",
-      "Corporate governance and resolutions",
-      "Minute book maintenance and annual filings",
-      "Documenting ongoing corporate obligations",
-    ],
-    whoFor: [
-      "Owners incorporating or restructuring a company",
-      "Corporations that need governance kept in order",
-      "Businesses documenting a share or ownership change",
-      "Companies whose minute book needs bringing current",
+      "Contract and commercial disputes",
+      "Real estate litigation",
+      "Construction and lien matters",
+      "Mortgage enforcement, power of sale, and foreclosure",
+      "Debt recovery and collection",
+      "Shareholder and partnership disputes",
+      "Estate and trust litigation",
+      "Property and ownership disputes",
     ],
     faqs: [
       {
-        q: "Should I incorporate my business?",
-        a: "It depends on your goals, your risk, and your tax situation. We will talk through the advantages and the obligations that come with incorporation so you can decide with a clear picture, and we will handle the setup if it is the right move.",
+        q: "Do I need to go to court to resolve a civil dispute?",
+        a: "Not necessarily. Depending on the circumstances, a dispute may be addressed through negotiation, mediation, or another form of resolution without proceeding to a trial. We can advise you on the options available in your circumstances.",
       },
       {
-        q: "What is a minute book and why does it matter?",
-        a: "A minute book is the official record of your corporation: its resolutions, registers, and filings. Keeping it current is a legal requirement and it becomes essential during a sale, financing, or audit. We can maintain it or bring a neglected one up to date.",
+        q: "When should I speak with a lawyer about a dispute?",
+        a: "It can be helpful to seek legal advice early, particularly where there are deadlines, contractual obligations, property interests, or other legal issues involved. Early advice can help you understand your position and the steps that may be available to you.",
       },
       {
-        q: "Do you work alongside my accountant?",
-        a: "Regularly. Corporate structure and tax planning go hand in hand, and we are happy to coordinate with your accountant so the legal and financial sides of a decision line up.",
+        q: "What happens if someone is suing me?",
+        a: "If you have been served with a claim, it is important to understand what has been filed, whether a response is required, and what deadlines may apply. We can review the claim with you, explain the process, and advise you on the available options.",
+      },
+      {
+        q: "Can you help me recover money that someone owes me?",
+        a: "We can assist with certain debt recovery matters, including reviewing the circumstances, relevant agreements and documentation, and advising on available options for pursuing the amount owing.",
       },
     ],
     image: "/photos/corporate.jpg",
     imageAlt: "Glass office towers seen from street level",
   },
   {
-    slug: "family-law",
-    number: "05",
-    title: "Family Law",
-    navLabel: "Family Law",
-    metaDescription:
-      "Family law guidance for sensitive matters, with care and precision. Kaizen Law serves the GTA and Niagara.",
-    summary:
-      "Steady, informed guidance through sensitive family matters with care and precision.",
-    intro:
-      "Family matters ask for something more than legal skill. They ask for a calm, honest explanation of the process and the choices in front of you. We treat that work with genuine care, and with the same precision we bring to every file, so you can make decisions from a place of clarity rather than crisis.",
-    overview: [
-      "Whether you are separating, sorting out arrangements for your children, or formalizing an agreement, the road can feel uncertain and personal. We help you understand where you stand, what the law expects, and what a fair, workable outcome could look like, without adding conflict where it is not needed.",
-      "We advise on separation, parenting and support arrangements, and the agreements that set them down clearly. Where matters can be resolved by agreement, we work toward that. Where they cannot, we prepare carefully and advocate for your interests with a steady hand.",
-    ],
-    includedHeading: "What this can include",
-    points: [
-      "Separation and the issues that come with it",
-      "Parenting arrangements and decision-making",
-      "Child and spousal support",
-      "Separation agreements and domestic contracts",
-      "A clear account of the process at every stage",
-    ],
-    whoFor: [
-      "Anyone facing a separation and unsure of the next step",
-      "Parents working out arrangements for their children",
-      "People negotiating or formalizing an agreement",
-      "Anyone who wants the process explained calmly and clearly",
-    ],
-    faqs: [
-      {
-        q: "Do we have to go to court?",
-        a: "Often, no. Many family matters are resolved by negotiation and a written agreement, which is usually faster, less costly, and less adversarial. Where court is necessary, we prepare thoroughly and represent you with care.",
-      },
-      {
-        q: "How are parenting and support arrangements decided?",
-        a: "Parenting decisions are guided by the best interests of the child, and support is guided largely by established guidelines. We will explain how these apply to your circumstances so you know what to reasonably expect.",
-      },
-      {
-        q: "Can you review an agreement someone has already given me?",
-        a: "Yes. Before you sign a separation agreement or domestic contract, it is important to understand exactly what it commits you to. We can review it, explain it, and advise you on it.",
-      },
-    ],
-    image: "/photos/family.jpg",
-    imageAlt: "A sunlit living room",
-  },
-  {
     slug: "criminal-law",
-    number: "06",
+    number: "03",
     title: "Criminal Law",
     navLabel: "Criminal Law",
     metaDescription:
@@ -424,45 +282,92 @@ export const practices: PracticeArea[] = [
     summary:
       "Focused representation and a clear understanding of the process when the stakes are high.",
     intro:
-      "When you are facing a criminal charge, the first thing you need is not a promise. It is a clear understanding of the process and what is genuinely at stake. We give you that, then bring focused, careful attention to the matter in front of you.",
+      "When you are facing a criminal charge, the first thing you need is not a promise. It is a clear understanding of the process, the issues involved, and what may be at stake. We provide that understanding and give careful attention to the matter before you.",
     overview: [
-      "A charge is frightening precisely because so much feels unknown: what happens next, what your options are, and what the consequences could be. We take the time to explain all of it plainly, review the disclosure against you, and identify the issues that matter to your defence.",
-      "From bail through to resolution, we make sure your rights are understood and protected, that you know where your matter stands at every step, and that the decisions along the way are yours to make with full information. Steady counsel when you need it most.",
+      "A criminal charge can be difficult to navigate, particularly when you are unsure what happens next, what your options are, or what consequences may follow. We take the time to explain the process, review the disclosure and circumstances of your matter, and identify the legal issues that may be relevant to your defence.",
+      "From bail through to resolution, we advise you on the steps involved, the options available, and the decisions that may need to be made along the way. Our role is to provide informed legal advice and representation while keeping you involved in the decisions concerning your matter.",
     ],
     includedHeading: "What this can include",
     points: [
-      "A clear explanation of the charge and the process",
-      "Bail and early-stage advice",
-      "Review of the disclosure and the issues in your matter",
-      "Representation through the stages of the case",
-      "Honest counsel on your options at each decision point",
-    ],
-    whoFor: [
-      "Anyone who has been charged and does not know their options",
-      "People who need bail or early-stage advice quickly",
-      "Anyone wanting the process and consequences explained plainly",
-      "Those who want focused attention on their matter",
+      "Criminal charges and defence",
+      "Bail hearings and release conditions",
+      "Assault and violent offences",
+      "Drug offences",
+      "Sexual offences",
+      "Theft, fraud, and property offences",
+      "Driving and motor vehicle offences",
+      "Warrants, searches, and arrest matters",
+      "Criminal law motions and Charter issues",
+      "Guilty pleas, trials, and sentencing",
+      "Youth criminal justice matters",
     ],
     faqs: [
       {
         q: "I have just been charged. What should I do first?",
-        a: "Speak to a lawyer before you speak to anyone else about the details. You have the right to counsel, and getting advice early, especially around bail and what not to say, can materially affect how your matter unfolds.",
+        a: "If you have been charged with a criminal offence, it is generally helpful to speak with a lawyer as early as possible. The appropriate next steps can depend on the nature of the charge, whether you have been released or detained, and the circumstances of your matter.",
       },
       {
-        q: "What does the process actually look like?",
-        a: "Most matters move through defined stages, from first appearance and disclosure to resolution or trial. We will map out those stages for your specific situation so nothing about the process catches you off guard.",
+        q: "What does the criminal process actually look like?",
+        a: "The process can vary depending on the charge and the circumstances of the case. It may involve an initial court appearance, disclosure, pre-trial steps, motions, negotiations, a guilty plea or trial, and sentencing where applicable. We can explain the stages that may apply to your matter and what to expect at each step.",
       },
       {
-        q: "Will you tell me honestly where I stand?",
-        a: "Yes. You will get a straight, realistic assessment, not false comfort and not alarm. Clear information is what lets you make good decisions about your own defence.",
+        q: "What is bail, and what happens at a bail hearing?",
+        a: "Bail is the process through which a person charged with an offence may be released while their matter is before the court, subject to any applicable terms and conditions. Where a person is not released by police, a bail hearing may be required. At a bail hearing, the court considers the circumstances of the case and the applicable legal requirements in deciding whether the person should be released and, if so, on what terms. We can explain the bail process, advise you on the issues that may arise, and represent you at a bail hearing where appropriate.",
       },
     ],
     image: "/photos/counsel.jpg",
     imageAlt: "A person signing a document at a desk",
   },
   {
+    slug: "family-law",
+    number: "04",
+    title: "Family Law",
+    navLabel: "Family Law",
+    metaDescription:
+      "Family law guidance for sensitive matters, with care and precision. Kaizen Law serves the GTA and Niagara.",
+    summary:
+      "Steady, informed guidance through sensitive family matters with care and precision.",
+    intro:
+      "Family law matters can involve important decisions about relationships, children, finances, and the future. We provide clear, practical legal guidance to help you understand the issues involved and the options available in your circumstances.",
+    overview: [
+      "Whether you are separating, making arrangements for your children, addressing support, or putting an agreement in place, we take the time to understand your situation and explain the legal considerations that may apply. Our role is to help you understand the process and the decisions that may need to be made along the way.",
+      "We assist with separation, parenting arrangements, child and spousal support, property and financial matters, and family law agreements. Where an agreement can be reached, we can assist with documenting the terms. Where a dispute requires a more formal process, we can advise you on the available steps and represent you as appropriate.",
+    ],
+    includedHeading: "What this can include",
+    points: [
+      "Separation and divorce",
+      "Parenting arrangements and decision-making",
+      "Child and spousal support",
+      "Property division and equalization",
+      "Separation agreements and domestic contracts",
+      "Marriage and cohabitation agreements",
+      "Family law disputes and litigation",
+      "Mobility and parenting across jurisdictions",
+    ],
+    faqs: [
+      {
+        q: "What should I do if I am separating from my spouse?",
+        a: "Separation can involve a number of legal and practical decisions, including arrangements for children, support, property, and living arrangements. The steps that may be appropriate will depend on your circumstances. We can help you understand the issues that may need to be addressed and discuss the options available to you.",
+      },
+      {
+        q: "How are parenting and support arrangements decided?",
+        a: "Parenting arrangements and support are determined based on the circumstances of the family and the applicable legal framework. This may include considerations relating to the best interests of the child and the applicable child or spousal support rules. We can explain the factors that may apply to your situation and assist with putting appropriate arrangements in place.",
+      },
+      {
+        q: "What happens to our home and other property when we separate?",
+        a: "Separation can raise questions about the family home, other property, debts, and the division of family property. The legal considerations can vary depending on factors such as how property is owned, the circumstances of the relationship, and the applicable rules. We can review your circumstances and explain the legal issues that may affect you.",
+      },
+      {
+        q: "Can you review a separation agreement before I sign it?",
+        a: "Yes. We can review a separation agreement and explain its terms and the legal considerations that may be relevant to you before you decide whether to sign. Depending on the circumstances, we can also advise you about provisions that may require clarification or further discussion.",
+      },
+    ],
+    image: "/photos/family.jpg",
+    imageAlt: "A sunlit living room",
+  },
+  {
     slug: "notary",
-    number: "07",
+    number: "05",
     title: "Notary Services",
     navLabel: "Notary",
     metaDescription:
@@ -470,41 +375,142 @@ export const practices: PracticeArea[] = [
     summary:
       "Convenient, professional notary services for documents that require trusted witnessing.",
     intro:
-      "Some documents simply need to be witnessed, certified, or commissioned properly, and by someone whose signature will be trusted. We provide notary services at our St. Catharines office, handled promptly and correctly, by appointment.",
+      "Some documents need to be notarized, certified, commissioned, or properly witnessed before they can be used for their intended purpose. We provide notary services by appointment at our St. Catharines office.",
     overview: [
-      "Notarization confirms that a document is genuine and that signatures are authentic, a requirement for many official, financial, and international matters. Whether you need a document notarized, a copy certified as a true copy, or an affidavit commissioned, we take care of it with the attention these documents deserve.",
-      "Bring valid identification and the complete, unsigned document, and we will handle the rest. If you are not certain what your document requires, ask when you book and we will tell you what to prepare.",
+      "We assist with a range of document-related services, including notarizing documents, certifying copies of original documents, commissioning affidavits and statutory declarations, and witnessing signatures where appropriate.",
+      "The requirements can vary depending on the document and how it will be used. If you are unsure what service you need, we can discuss the document with you when arranging your appointment and let you know what to bring.",
+      "Please bring valid government-issued identification and the complete document. If the document requires a signature in the presence of a notary or commissioner, please do not sign it in advance.",
     ],
     includedHeading: "What this can include",
     points: [
-      "Notarizing documents that require it",
-      "Certifying true copies of original documents",
+      "Notarizing documents",
+      "Certifying copies of original documents",
       "Commissioning affidavits and statutory declarations",
-      "Witnessing signatures on official documents",
-      "Available by appointment at our St. Catharines office",
-    ],
-    whoFor: [
-      "Anyone with a document that must be notarized",
-      "People needing a certified true copy of an original",
-      "Those swearing an affidavit or statutory declaration",
-      "Anyone handling official or international paperwork",
+      "Witnessing signatures where appropriate",
+      "Notary services by appointment",
     ],
     faqs: [
       {
         q: "What should I bring to a notary appointment?",
-        a: "Bring valid government-issued photo identification and the complete document, unsigned. Most documents must be signed in front of the notary. If a copy is being certified, bring the original as well.",
+        a: "Please bring valid government-issued identification and the complete document. If you need a copy certified, bring the original document as well. If the document requires you to sign in the presence of the notary, please leave it unsigned until your appointment.",
       },
       {
         q: "Can I sign the document before I arrive?",
-        a: "Usually not. For notarization, the document typically must be signed in the notary's presence so the signature can be properly witnessed. When in doubt, leave it unsigned and we will guide you.",
+        a: "If the document is to be signed in the presence of the notary, it should be signed during the appointment. If you are unsure, it is best to leave the document unsigned and confirm when arranging your appointment.",
       },
       {
         q: "How do I arrange notary services?",
-        a: "Notary services are offered by appointment at our St. Catharines office. Get in touch with a short note about the document you need handled and we will arrange a time.",
+        a: "Notary services are available by appointment at our St. Catharines office. Contact us with some information about the document and the service you are looking for, and we can let you know how to arrange an appointment.",
       },
     ],
     image: "/photos/notary.jpg",
     imageAlt: "A fountain pen resting on an open notebook",
+  },
+  {
+    slug: "real-estate",
+    number: "06",
+    title: "Real Estate",
+    navLabel: "Real Estate",
+    metaDescription:
+      "Real estate counsel for purchases, sales, refinancing, and the decisions that shape property ownership. Kaizen Law, St. Catharines.",
+    summary:
+      "Practical guidance for purchases, sales, refinancing, and the decisions that shape property ownership.",
+    intro:
+      "A real estate transaction is often one of the largest financial decisions a person will make. The details matter from what is being bought or sold, to the terms of the Agreement of Purchase and Sale, to the legal and financial considerations that can affect the transaction long after closing.",
+    overview: [
+      "At Kaizen Law, we help clients understand those details and navigate their transactions with clarity and confidence. We provide practical, responsive legal guidance from the initial review of your transaction through to closing.",
+      "Whether you are purchasing your first home, selling a property, refinancing your mortgage, or entering into a commercial transaction, we work to make the legal process clear and predictable. We review agreements, conduct the necessary searches and due diligence, coordinate with lenders and other professionals, and ensure that the legal requirements for closing are addressed carefully and on time.",
+      "We also advise clients on the important considerations that come with property ownership, including title structure, surveys, condominium status certificates, financing, and other matters that may affect your interests before or after a transaction is completed.",
+      "Our approach is straightforward: understand the transaction, identify potential issues early, explain your options clearly, and work toward a smooth closing. Our goal is for you to understand exactly what you are buying, selling, or committing to, and to move forward with confidence.",
+    ],
+    includedHeading: "What this can include",
+    points: [
+      "Residential purchases and sales",
+      "First-time homebuyers",
+      "Mortgage refinancing",
+      "Title transfers and survivorship applications",
+      "Agreements of Purchase and Sale",
+      "Private transactions and assignments",
+      "Commercial real estate transactions",
+      "Real estate due diligence and title searches",
+      "Condominium transactions",
+      "New construction and pre-construction purchases",
+      "Private mortgage transactions",
+      "Property transfers and changes in ownership",
+    ],
+    faqs: [
+      {
+        q: "When should I involve a lawyer in my purchase or sale?",
+        a: "Real estate matters can take many forms, and the legal considerations can vary depending on the property, the parties involved, and the terms of the transaction. Legal guidance may be helpful when you are entering into a purchase or sale, arranging financing, changing ownership on title, dealing with a condominium property, or entering into a commercial or private transaction. At Kaizen Law, we work with clients at different stages of a real estate matter, from reviewing an agreement before it is signed to assisting with the legal steps required to complete a transaction.",
+      },
+      {
+        q: "What happens between signing the agreement and closing?",
+        a: "There is significant legal work between signing and closing. We conduct title and off-title searches, review the transaction and closing requirements, communicate with your lender and the other party's lawyer, prepare the necessary closing documentation, and coordinate the transfer of funds and title.",
+      },
+      {
+        q: "Can you review my Agreement of Purchase and Sale before I sign it?",
+        a: "Yes. Having a lawyer review an Agreement of Purchase and Sale before signing can help you understand your obligations and identify issues that may affect the transaction. Where appropriate, we can also assist with negotiating or proposing revisions to the agreement.",
+      },
+      {
+        q: "Do I need a lawyer if I am refinancing my mortgage?",
+        a: "Yes. A refinance involves a number of legal steps, from reviewing the new mortgage documents and lender requirements to addressing the existing mortgage, completing the necessary title work, and registering the new mortgage. A lawyer can handle these legal requirements and coordinate the closing process with the lender and other parties involved. The specific steps will depend on the terms of the refinance and the circumstances of the property.",
+      },
+      {
+        q: "How much does a real estate lawyer charge for a closing?",
+        a: "Legal fees can vary depending on the type of transaction, the property, and the work required. A straightforward residential transaction may differ in cost from a refinance, private transaction, or commercial matter. Before proceeding, we can explain the anticipated legal fees and other applicable costs based on the circumstances of your transaction.",
+      },
+    ],
+    image: "/photos/real-estate.jpg",
+    imageAlt: "A modern house exterior in warm light",
+  },
+  {
+    slug: "wills-estates",
+    number: "07",
+    title: "Wills & Estates",
+    navLabel: "Wills & Estates",
+    metaDescription:
+      "Wills and estates counsel for planning and administration. Kaizen Law Professional Corporation, serving Ontario clients.",
+    summary:
+      "Thoughtful planning and administration designed to protect what matters and clarify what comes next.",
+    intro:
+      "Estate planning is about more than preparing documents. It is about making thoughtful decisions about your future, your family, and the way your affairs will be managed when you are no longer able to manage them yourself.",
+    overview: [
+      "Whether you are putting a plan in place for the years ahead or helping administer the estate of someone close to you, we provide clear, practical legal guidance at every stage. We take the time to understand your circumstances and explain what your documents mean, what decisions need to be made, and what may need to happen next.",
+      "A will can set out how you wish your estate to be distributed and who you want to take on important responsibilities. Powers of attorney can address who may make financial or personal care decisions on your behalf during your lifetime. Together with broader estate planning, these documents can help create greater clarity for you and those who may be called upon to act for you.",
+      "When a loved one passes away, administering an estate can bring a different set of responsibilities. We assist executors and estate trustees with the legal steps involved, from probate and dealing with estate assets and liabilities to the eventual distribution of the estate, depending on the circumstances.",
+    ],
+    includedHeading: "What this can include",
+    points: [
+      "Wills",
+      "Powers of attorney",
+      "Estate planning",
+      "Estate administration and probate",
+      "Survivorship applications",
+    ],
+    faqs: [
+      {
+        q: "Do I need a will if my estate is relatively simple?",
+        a: "A will can be useful regardless of the size of your estate. It allows you to set out how you want your estate to be distributed and who you wish to appoint to administer it. Without a will, the distribution of your estate and the administration of your estate are generally governed by Ontario law, which may not reflect your wishes. If you are unsure whether you need a will or what should be included, we can discuss your circumstances and the options available to you.",
+      },
+      {
+        q: "What is a Power of Attorney?",
+        a: "A Power of Attorney is a legal document that allows you to give another person authority to make certain decisions on your behalf while you are alive. A Power of Attorney for Property generally concerns financial and property matters, while a Power of Attorney for Personal Care concerns personal care decisions. The appropriate documents and provisions depend on your circumstances.",
+      },
+      {
+        q: "I have been named an executor. What should I do first?",
+        a: "Administering an estate can involve a number of legal and practical steps. The appropriate starting point will depend on the circumstances of the estate, the terms of the will, and the assets and liabilities involved. We can assist executors and estate trustees in understanding their responsibilities and the steps that may be required.",
+      },
+      {
+        q: "What is probate, and is it always required?",
+        a: "Probate is the court process through which an estate trustee may obtain a Certificate of Appointment of Estate Trustee. Whether an application is necessary depends on the circumstances of the estate and the assets involved. We can advise you on whether an application may be required and assist with the process where appropriate.",
+      },
+      {
+        q: "Can you help with an estate after someone has passed away?",
+        a: "Yes. We assist with estate administration and can advise on matters such as probate, estate assets and liabilities, required documentation, and distribution of the estate, depending on the circumstances.",
+      },
+    ],
+    image: "/photos/wills.jpg",
+    imageAlt: "A fountain pen writing on paper",
   },
 ];
 
@@ -517,10 +523,9 @@ export interface Lawyer {
   role: "Founder" | "Co-Founder";
   monogram: string;
   jurisdiction: string;
-  languages: string[];
   /** One-line summary for compact cards. */
   summary: string;
-  /** Full bio paragraphs for the profile. DRAFT copy — pending each lawyer's approval. */
+  /** Full bio paragraphs for the profile. */
   bio: string[];
   /** Intended source for this lawyer's portrait. */
   photo: string;
@@ -534,12 +539,12 @@ export const lawyers: Lawyer[] = [
     role: "Founder",
     monogram: "GS",
     jurisdiction: "Ontario",
-    languages: ["English", "Punjabi", "Hindi", "Urdu"],
     summary:
-      "A founder of Kaizen Law, Gourav brings a calm, focused approach to every matter, and steady counsel when the stakes are highest.",
+      "A founding partner of Kaizen Law, Gourav focuses on criminal and family law, bringing a practical, personable approach to every matter.",
     bio: [
-      "Gourav Sharma is a founder of Kaizen Law. He is drawn to the work precisely because it meets people at difficult moments, and he believes the first thing a client deserves is an honest explanation of where they stand.",
-      "He brings careful preparation and a composed presence to every matter, and takes the time to make sure clients understand every decision that affects them. He speaks English, Punjabi, Hindi, and Urdu.",
+      "Gourav Sharma is a founding partner of Kaizen Law, with a practice focused primarily on criminal and family law. He brings a practical and personable approach to his work, taking the time to understand each client's circumstances and objectives and providing clear, thoughtful advice throughout the legal process.",
+      "Gourav studied Criminology at York University before obtaining his law degree from the University of Leicester in the United Kingdom.",
+      "Outside of law, Gourav enjoys working out, running, and travelling.",
     ],
     photo: "/photos/gourav-sharma.jpg",
     photoReady: false,
@@ -549,12 +554,12 @@ export const lawyers: Lawyer[] = [
     role: "Co-Founder",
     monogram: "NT",
     jurisdiction: "Ontario",
-    languages: ["English", "Punjabi", "Hindi"],
     summary:
-      "A co-founder of Kaizen Law, Nitika is known for translating complex matters into clear, practical guidance her clients can act on with confidence.",
+      "A co-founder of Kaizen Law, Nitika practises across real estate, wills and estates, business and corporate law, and family law.",
     bio: [
-      "Nitika Thapar is a co-founder of Kaizen Law. Clients come to her for the moments that shape a life or a business, and she brings the same precision and care to each one.",
-      "She is known for turning complex matters into plain, practical guidance, and for counsel that is responsive, thorough, and genuinely shaped around each client's objectives. She speaks English, Punjabi, and Hindi.",
+      "Nitika Thapar is a co-founder of Kaizen Law, with a practice encompassing real estate, wills and estates, business and corporate law, and family law. She takes a thoughtful and detail-oriented approach to her practice, with a focus on understanding each client's circumstances and providing practical legal guidance tailored to their needs.",
+      "Nitika completed her undergraduate studies at the University of Waterloo, majoring in Legal Studies, before obtaining her law degree from the University of Leicester in the United Kingdom.",
+      "Outside of her legal practice, Nitika enjoys travelling, spending time with her dog, discovering new places to eat, and spending time with family and friends.",
     ],
     photo: "/photos/nitika-thapar.jpg",
     photoReady: false,
@@ -609,6 +614,9 @@ export const redirects: RedirectDef[] = [
   { source: "/services/:slug", destination: "/practice/:slug", permanent: true },
   { source: "/about", destination: "/people", permanent: true },
   { source: "/privacy-policy", destination: "/privacy", permanent: true },
+  // Business and Corporate were merged into a single practice area.
+  { source: "/practice/business", destination: "/practice/business-corporate", permanent: true },
+  { source: "/practice/corporate", destination: "/practice/business-corporate", permanent: true },
 ];
 
 export function absoluteUrl(path = "/"): string {

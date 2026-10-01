@@ -6,7 +6,14 @@ import { FoundersPanelSwitch } from "@/components/preview/FoundersPanelSwitch";
 import { LawyerCardsSwitch } from "@/components/preview/LawyerCardsSwitch";
 import { GoldButton, SectionIndex, TextLink } from "@/components/ui/primitives";
 import { buildMetadata } from "@/lib/seo";
-import { about, contact, philosophy, site } from "@/lib/site.config";
+import {
+  about,
+  contact,
+  homeDisclaimer,
+  philosophy,
+  site,
+  whyKaizen,
+} from "@/lib/site.config";
 
 export const metadata = buildMetadata({
   title: site.defaultTitle,
@@ -35,8 +42,8 @@ export default function HomePage() {
             <em>Steady direction.</em>
           </h1>
           <p className="hero-intro">
-            Thoughtful, practical legal solutions for the decisions that shape
-            your life, your family, and your business.
+            Thoughtful, practical legal guidance for individuals, families, and
+            businesses.
           </p>
           <GoldButton href="/contact">Discuss your matter</GoldButton>
         </div>
@@ -91,9 +98,22 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Why Kaizen */}
+      <section className="section-light" id="why-kaizen" style={{ paddingTop: 0 }}>
+        <SectionIndex n="03" label={whyKaizen.eyebrow} />
+        <div className="split-grid">
+          <h2>
+            {whyKaizen.title} <em>{whyKaizen.titleEm}</em>
+          </h2>
+          <div>
+            <p className="lead">{whyKaizen.body}</p>
+          </div>
+        </div>
+      </section>
+
       {/* Practice */}
       <section className="practice section-dark" id="practice">
-        <SectionIndex n="03" label="Areas of practice" on="ink" />
+        <SectionIndex n="04" label="Areas of practice" on="ink" />
         <div className="section-heading">
           <h2>
             Law for the <em>whole picture.</em>
@@ -108,7 +128,7 @@ export default function HomePage() {
 
       {/* People */}
       <section className="people section-light" id="people">
-        <SectionIndex n="04" label="The people behind the practice" />
+        <SectionIndex n="05" label="The people behind the practice" />
         <div className="people-intro">
           <h2>
             Personal attention.
@@ -131,7 +151,7 @@ export default function HomePage() {
       <section className="locations section-gold" id="locations">
         <div className="location-layout">
           <div>
-            <SectionIndex n="05" label="Where we work" />
+            <SectionIndex n="06" label="Where we work" />
             <h2>
               Close to
               <br />
@@ -139,9 +159,7 @@ export default function HomePage() {
             </h2>
           </div>
           <div>
-            <p className="lead">
-              Serving clients across the Greater Toronto and Niagara regions.
-            </p>
+            <p className="lead">{contact.areasLead}</p>
             <p>
               Our offices and client relationships span{" "}
               {contact.areas.map((area) => area.name).join(", ")}.
@@ -162,7 +180,12 @@ export default function HomePage() {
       </section>
 
       {/* Contact */}
-      <Enquiry />
+      <Enquiry index="07" />
+
+      {/* Legal disclaimer — home page only */}
+      <aside className="home-disclaimer" role="note">
+        <p>{homeDisclaimer}</p>
+      </aside>
     </>
   );
 }

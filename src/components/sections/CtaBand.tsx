@@ -2,7 +2,7 @@ import { Container, GoldButton } from "@/components/ui/primitives";
 import { contact } from "@/lib/site.config";
 
 export function CtaBand({
-  eyebrow = "Start a conversation",
+  eyebrow = "Contact Kaizen Law",
   title = "Let's discuss",
   italic = "your next step.",
   note = "Information requests are answered by email. Share a little about your matter and we will be in touch.",

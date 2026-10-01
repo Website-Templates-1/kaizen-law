@@ -15,7 +15,6 @@ import { buildMetadata } from "@/lib/seo";
 import {
   contact,
   engagementNote,
-  engagementSteps,
   getPractice,
   practices,
 } from "@/lib/site.config";
@@ -117,7 +116,7 @@ export default async function PracticeDetailPage({
                 Information requests are answered by email.
               </p>
               <div className="mt-7">
-                <GoldButton href="/contact">Start a conversation</GoldButton>
+                <GoldButton href="/contact">Contact Kaizen Law</GoldButton>
               </div>
               <dl className="mt-8 space-y-5 border-t border-line pt-7 text-[14px]">
                 <div>
@@ -175,68 +174,6 @@ export default async function PracticeDetailPage({
           <p className="mt-10 border-t border-line pt-6 text-[13px] leading-relaxed text-muted">
             {engagementNote}
           </p>
-        </Container>
-      </section>
-
-      {/* Who it's for */}
-      <section className="bg-cream py-20 sm:py-28">
-        <Container className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
-          <div>
-            <p className="eyebrow text-gold">Who it&apos;s for</p>
-            <h2 className="display mt-6 text-[2rem] leading-[1.14] text-ink sm:text-[2.5rem]">
-              Is this the <em className="italic text-gold">right fit?</em>
-            </h2>
-            <p className="mt-6 max-w-md text-[16px] leading-relaxed text-muted">
-              Every matter is different. If any of the following sound like your
-              situation, a short conversation will tell us both whether we are
-              the right fit.
-            </p>
-          </div>
-          <ul className="grid gap-x-10 gap-y-5 sm:grid-cols-2">
-            {practice.whoFor.map((item) => (
-              <li
-                key={item}
-                className="flex gap-3 border-t border-line pt-5 text-[16px] leading-relaxed text-ink"
-              >
-                <span className="mt-px text-gold" aria-hidden="true">
-                  +
-                </span>
-                {item}
-              </li>
-            ))}
-          </ul>
-        </Container>
-      </section>
-
-      {/* How we work */}
-      <section className="bg-ink py-20 text-cream sm:py-28">
-        <Container>
-          <div className="max-w-2xl">
-            <p className="eyebrow text-gold-bright">How we work</p>
-            <h2 className="display mt-6 text-[2rem] leading-[1.14] text-white sm:text-[2.5rem]">
-              A measured process,{" "}
-              <em className="italic text-gold-bright">every time.</em>
-            </h2>
-            <p className="mt-6 text-[16px] leading-relaxed text-cream/60">
-              The same measured process guides every matter, so you always know
-              what is happening and what comes next.
-            </p>
-          </div>
-          <ol className="mt-14 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
-            {engagementSteps.map((step, i) => (
-              <li key={step.title} className="border-t border-dark-line pt-6">
-                <span className="text-[11px] uppercase tracking-[0.16em] text-gold-bright">
-                  Step {String(i + 1).padStart(2, "0")}
-                </span>
-                <h3 className="serif mt-4 text-[1.5rem] text-white">
-                  {step.title}
-                </h3>
-                <p className="mt-3 text-[14px] leading-relaxed text-[#aca9a2]">
-                  {step.body}
-                </p>
-              </li>
-            ))}
-          </ol>
         </Container>
       </section>
 

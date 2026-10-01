@@ -19,10 +19,6 @@ export const metadata = buildMetadata({
   path: "/people",
 });
 
-const languages = Array.from(
-  new Set(lawyers.flatMap((lawyer) => lawyer.languages)),
-);
-
 export default function PeoplePage() {
   return (
     <>
@@ -34,11 +30,7 @@ export default function PeoplePage() {
         italic="Professional perspective."
         lede="Every matter is different. The relationship between lawyer and client should be direct, responsive, and grounded in trust."
         crumbs={crumbs}
-        meta={[
-          `${lawyers.length} lawyers`,
-          "Licensed in Ontario",
-          languages.join(" · "),
-        ]}
+        meta={[`${lawyers.length} lawyers`, "Licensed in Ontario"]}
       />
 
       {/* Approach + founders photo + at a glance */}
@@ -60,9 +52,9 @@ export default function PeoplePage() {
                 </p>
                 <p>
                   Between us we advise across real estate, wills and estates,
-                  business, corporate, family, and criminal matters, and we speak
-                  English, Punjabi, Hindi, and Urdu, so more of our community can
-                  be understood in their own words.
+                  business and corporate law, family law, criminal law, and civil
+                  litigation, bringing the same care to a first home purchase as
+                  to a complex commercial file.
                 </p>
               </div>
 

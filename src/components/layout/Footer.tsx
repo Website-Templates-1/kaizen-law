@@ -69,6 +69,10 @@ export function Footer() {
               <PhoneIcon className="footer-icon" />
               <span>{contact.phoneDisplay}</span>
             </a>
+            <span className="footer-contact-item">
+              <PhoneIcon className="footer-icon" />
+              <span>Fax {contact.faxDisplay}</span>
+            </span>
           </address>
         </div>
       </div>

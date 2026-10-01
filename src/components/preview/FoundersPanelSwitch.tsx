@@ -1,35 +1,23 @@
-"use client";
-
-import { Portrait } from "@/components/media/Portrait";
-import { usePreviewMode } from "@/components/preview/PreviewMode";
 import { glance } from "@/lib/site.config";
 
 /**
- * The founders-photo slot, shown on the home "about" band and the People page.
- * In photo mode it renders the normal Portrait; in text-only mode it renders a
- * typographic firm panel that fills the same space with meaning instead of a
- * blank frame.
+ * The firm panel shown on the home "about" band and the People page, in place
+ * of a founders photograph. The firm has chosen a text-only presentation, so a
+ * typographic panel fills the space with meaning instead of a blank frame.
+ *
+ * The photo-related props are retained so the call sites can stay declarative
+ * about where a portrait would otherwise sit.
  */
 export function FoundersPanelSwitch(props: {
-  monogram: string;
-  photo: string;
-  photoReady: boolean;
-  alt: string;
+  monogram?: string;
+  photo?: string;
+  photoReady?: boolean;
+  alt?: string;
   caption?: string;
   aspect?: number | string;
   sizes?: string;
 }) {
-  const mode = usePreviewMode();
-
-  if (mode === "text") {
-    return <FirmCredentialPanel aspect={props.aspect} />;
-  }
-
-  return <Portrait {...props} />;
-}
-
-function FirmCredentialPanel({ aspect }: { aspect?: number | string }) {
-  const style = aspect ? { aspectRatio: String(aspect) } : undefined;
+  const style = props.aspect ? { aspectRatio: String(props.aspect) } : undefined;
 
   return (
     <div className="firm-panel" style={style} role="img" aria-label="Kaizen Law">

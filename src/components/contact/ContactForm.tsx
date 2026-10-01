@@ -2,7 +2,7 @@
 
 import { useActionState, useId, useRef, useEffect } from "react";
 import { submitContact, type ContactState } from "@/app/actions/contact";
-import { practices } from "@/lib/site.config";
+import { contactFormWarning, practices } from "@/lib/site.config";
 
 const initial: ContactState = { status: "idle" };
 
@@ -33,6 +33,10 @@ export function ContactForm() {
 
   return (
     <form ref={formRef} action={formAction} className="contact-form" noValidate>
+      <p className="contact-warning" role="note">
+        {contactFormWarning}
+      </p>
+
       {state.status === "error" && state.message && (
         <p role="alert" className="form-error">
           {state.message}

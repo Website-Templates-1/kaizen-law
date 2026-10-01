@@ -7,9 +7,11 @@ import { contact } from "@/lib/site.config";
 export function Enquiry({
   asPage = false,
   crumbs,
+  index = "06",
 }: {
   asPage?: boolean;
   crumbs?: Crumb[];
+  index?: string;
 }) {
   const Title = asPage ? "h1" : "h2";
 
@@ -20,7 +22,7 @@ export function Enquiry({
           <Crumbs items={crumbs} />
         </div>
       )}
-      <SectionIndex n="06" label="Start a conversation" on="ink" />
+      <SectionIndex n={index} label="Contact Kaizen Law" on="ink" />
       <div className="contact-grid">
         <div className="contact-info">
           <Title>
