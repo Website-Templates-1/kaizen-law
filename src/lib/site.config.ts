@@ -567,7 +567,7 @@ export const lawyers: Lawyer[] = [
 ];
 
 export const glance = [
-  { value: "4+", label: "Years of experience" },
+  { value: "ON", label: "Licensed in Ontario" },
   { value: "95%", label: "Client satisfaction rate" },
   { value: "24h", label: "Response time with new clients" },
 ];

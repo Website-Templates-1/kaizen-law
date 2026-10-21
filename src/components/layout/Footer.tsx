@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Logo } from "@/components/brand/Logo";
-import { MailIcon, PhoneIcon, PinIcon } from "@/components/ui/icons";
+import { MailIcon, PhoneIcon, PinIcon, PrinterIcon } from "@/components/ui/icons";
 import { contact, practiceNav, site } from "@/lib/site.config";
 
 const exploreLinks = [
@@ -70,8 +70,8 @@ export function Footer() {
               <span>{contact.phoneDisplay}</span>
             </a>
             <span className="footer-contact-item">
-              <PhoneIcon className="footer-icon" />
-              <span>Fax {contact.faxDisplay}</span>
+              <PrinterIcon className="footer-icon" />
+              <span>{contact.faxDisplay}</span>
             </span>
           </address>
         </div>
