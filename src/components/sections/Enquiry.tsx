@@ -26,9 +26,9 @@ export function Enquiry({
       <div className="contact-grid">
         <div className="contact-info">
           <Title>
-            Let&apos;s discuss
+            Request a
             <br />
-            <em>your next step.</em>
+            <em>Consultation.</em>
           </Title>
           <p className="contact-note">{contact.response}</p>
 

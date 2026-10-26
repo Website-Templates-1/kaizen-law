@@ -44,6 +44,7 @@ export function PracticeList({ variant = "rows" }: { variant?: "rows" | "grid" }
         >
           <span className="practice-number">{practice.number}</span>
           <h3>{practice.title}</h3>
+          <p className="practice-tagline">{practice.tagline}</p>
           <p>{practice.summary}</p>
           <span className="item-line" aria-hidden="true" />
         </Link>

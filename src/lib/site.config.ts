@@ -13,7 +13,7 @@ export const site = {
   domain: "https://www.kaizenlaw.ca",
   locale: "en_CA",
   htmlLang: "en-CA",
-  defaultTitle: "Kaizen Law | Clear counsel. Steady direction.",
+  defaultTitle: "Kaizen Law | Your Matter. Our Commitment.",
   titleTemplate: "%s | Kaizen Law",
   defaultDescription:
     "Kaizen Law Professional Corporation provides thoughtful, practical legal counsel in real estate, wills and estates, business and corporate law, family law, criminal law, and civil litigation across the GTA and Niagara.",
@@ -106,24 +106,23 @@ export const blog = {
 
 export const philosophy = {
   eyebrow: "Our philosophy",
-  titleLead: "Built on the idea that",
-  titleEm: "better",
-  titleRest: "is always possible.",
+  title: "A Modern Approach.",
+  titleEm: "A Personal Commitment.",
   paragraphs: [
-    "Kaizen means continuous improvement: the steady, deliberate pursuit of doing things a little better each time. It is the principle our firm is named for, and the standard we hold every file to: precision in the detail, strategy in the approach, and integrity in the counsel we give.",
-    "We begin by listening. Before a document is drafted or a position is taken, we take the time to understand what you are trying to achieve and what a good outcome looks like for you. From there we translate the complexity of the law into a clear path forward, one you can follow and act on with confidence.",
-    "The result is legal counsel that is considered, practical, and genuinely shaped around your objectives. Not louder. Not longer. Better.",
+    "At Kaizen Law, we believe effective legal representation begins with understanding our clients. We combine careful preparation, practical legal advice, and a thoughtful approach to each matter. Whether navigating a personal legal challenge, protecting your interests, or planning for the future, our focus remains on providing guidance tailored to your circumstances.",
   ],
 } as const;
 
 /** Firm-wide "about" narrative, used on the home about band. */
 export const about = {
   eyebrow: "About the firm",
-  title: "A boutique practice,",
-  titleEm: "built around you.",
+  title: "Boutique by Design.",
+  titleEm: "Personal by Nature.",
   paragraphs: [
-    "Kaizen Law Professional Corporation is a boutique firm serving individuals, families, and businesses across the Greater Toronto Area and the Niagara region. We handle real estate, wills and estates, business and corporate law, family law, criminal law, and civil litigation. We bring the same care to a first home purchase as we do to a complex commercial file.",
-    "Because we are small by design, you work directly with the lawyer handling your matter, with a direct line of communication throughout your file.",
+    "At Kaizen Law Professional Corporation, we believe exceptional legal representation begins with understanding the people behind every matter.",
+    "Serving individuals, families, and businesses across the Greater Toronto Area and Niagara Region, our firm provides legal services in real estate, wills and estates, corporate and business law, family law, criminal defence, and civil litigation.",
+    "Whether you're purchasing your first home, protecting your family's future, navigating a legal dispute, or making an important business decision, we approach every matter with care, diligence, and a commitment to your interests.",
+    "Boutique by design, we offer a more personal approach to legal services. You'll work directly with the lawyer responsible for your matter, with clear communication, thoughtful guidance, and dedicated attention at every stage.",
   ],
   /** Intended source for the "both founders together" photograph. */
   teamPhoto: "/photos/founders.jpg",
@@ -136,9 +135,22 @@ export const about = {
 /** Short "Why Kaizen?" note, shown on the home page. */
 export const whyKaizen = {
   eyebrow: "Why Kaizen?",
-  title: "The person behind",
-  titleEm: "the matter.",
-  body: "We believe good legal service starts with understanding the person behind the matter. Our practice is intentionally focused, allowing us to work closely with our clients and approach each file with care, preparation and attention to detail.",
+  title: "Your Priorities.",
+  titleEm: "Our Purpose.",
+  paragraphs: [
+    "At Kaizen Law, we recognize that every legal matter carries its own challenges, priorities, and personal significance. We take the time to understand what matters most to you, providing thoughtful guidance, clear communication, and dedicated attention throughout the legal process.",
+    "Our boutique approach allows us to build meaningful client relationships and deliver legal services grounded in preparation, diligence, and a genuine commitment to those we represent.",
+  ],
+} as const;
+
+/** Home "people behind the practice" intro. */
+export const peopleIntro = {
+  title: "Dedicated Counsel.",
+  titleEm: "Unwavering Commitment.",
+  paragraphs: [
+    "At Kaizen Law, we believe exceptional legal representation is built on trust, diligence, and a steadfast commitment to our clients. We approach every matter with strategic insight, meticulous preparation, and determined advocacy, ensuring that your interests remain at the forefront of every decision.",
+    "Our commitment extends beyond providing legal advice. We strive to build lasting relationships through direct communication, sound professional judgment, and a genuine dedication to those we represent.",
+  ],
 } as const;
 
 /** Shown on practice pages and the contact form. Not legal advice, and not a retainer. */
@@ -161,6 +173,8 @@ export interface PracticeArea {
   title: string;
   navLabel: string;
   metaDescription: string;
+  /** Short slogan shown above the summary on the home practice list. */
+  tagline: string;
   summary: string;
   intro: string;
   /** Deeper overview shown on the detail page — one or two paragraphs. */
@@ -184,8 +198,9 @@ export const practices: PracticeArea[] = [
     navLabel: "Business & Corporate",
     metaDescription:
       "Business and corporate counsel for founders and companies: contracts, structure, shareholder arrangements, incorporation, and transactions. Kaizen Law, Ontario.",
+    tagline: "Supporting your business at every stage.",
     summary:
-      "Practical counsel for founders and companies on contracts, structure, ownership, and the decisions that shape a business.",
+      "Strategic legal guidance for entrepreneurs, professionals, and established businesses, from incorporation and corporate structuring to commercial agreements, transactions, and ongoing business matters.",
     intro:
       "Running a business involves decisions that can have lasting legal and practical consequences. Whether you are starting a new venture, bringing in a business partner, entering into an agreement, or changing the way your business is structured, having the right legal framework in place can make those decisions easier to navigate.",
     overview: [
@@ -231,8 +246,9 @@ export const practices: PracticeArea[] = [
     navLabel: "Civil Litigation",
     metaDescription:
       "Civil litigation counsel for contract, property, debt, construction, shareholder, and estate disputes. Kaizen Law, serving the GTA and Niagara.",
+    tagline: "Protecting your interests. Resolving disputes.",
     summary:
-      "Clear, practical representation in disputes over contracts, property, debts, construction, and estates.",
+      "Practical, results-oriented representation in contractual, commercial, property, construction, and estate disputes, with a focus on protecting your rights and pursuing effective resolutions.",
     intro:
       "Civil disputes can affect your business, property, finances, and relationships, often at a time when the legal issues are already difficult to navigate. We help clients understand the dispute, the issues involved, and the options available to them.",
     overview: [
@@ -279,8 +295,9 @@ export const practices: PracticeArea[] = [
     navLabel: "Criminal Law",
     metaDescription:
       "Criminal law representation with a clear view of the process when the stakes are high. Kaizen Law, Ontario.",
+    tagline: "Your Rights. Your Defence.",
     summary:
-      "Focused representation and a clear understanding of the process when the stakes are high.",
+      "Dedicated criminal defence representation grounded in careful preparation, strategic advocacy, and a commitment to protecting your rights at every stage of the criminal justice process.",
     intro:
       "When you are facing a criminal charge, the first thing you need is not a promise. It is a clear understanding of the process, the issues involved, and what may be at stake. We provide that understanding and give careful attention to the matter before you.",
     overview: [
@@ -325,8 +342,9 @@ export const practices: PracticeArea[] = [
     navLabel: "Family Law",
     metaDescription:
       "Family law guidance for sensitive matters, with care and precision. Kaizen Law serves the GTA and Niagara.",
+    tagline: "Guidance through life's most personal challenges.",
     summary:
-      "Steady, informed guidance through sensitive family matters with care and precision.",
+      "Compassionate, practical legal guidance in separation, divorce, parenting arrangements, decision-making responsibility, child and spousal support, and other family law matters, with a focus on protecting your interests and helping you navigate important transitions.",
     intro:
       "Family law matters can involve important decisions about relationships, children, finances, and the future. We provide clear, practical legal guidance to help you understand the issues involved and the options available in your circumstances.",
     overview: [
@@ -372,8 +390,9 @@ export const practices: PracticeArea[] = [
     navLabel: "Notary",
     metaDescription:
       "Notary services in St. Catharines for documents that need professional witnessing. Kaizen Law Professional Corporation.",
+    tagline: "Professional service. Attention to detail.",
     summary:
-      "Convenient, professional notary services for documents that require trusted witnessing.",
+      "Reliable and convenient notarization, commissioning of affidavits, and document certification services, handled with professionalism, efficiency, and care.",
     intro:
       "Some documents need to be notarized, certified, commissioned, or properly witnessed before they can be used for their intended purpose. We provide notary services by appointment at our St. Catharines office.",
     overview: [
@@ -409,12 +428,13 @@ export const practices: PracticeArea[] = [
   {
     slug: "real-estate",
     number: "06",
-    title: "Real Estate",
+    title: "Real Estate Law",
     navLabel: "Real Estate",
     metaDescription:
       "Real estate counsel for purchases, sales, refinancing, and the decisions that shape property ownership. Kaizen Law, St. Catharines.",
+    tagline: "Protecting your investment. Guiding your next move.",
     summary:
-      "Practical guidance for purchases, sales, refinancing, and the decisions that shape property ownership.",
+      "Comprehensive legal guidance for residential and commercial real estate transactions, including purchases, sales, refinancing, and property-related matters, ensuring your interests remain a priority throughout the process.",
     intro:
       "A real estate transaction is often one of the largest financial decisions a person will make. The details matter from what is being bought or sold, to the terms of the Agreement of Purchase and Sale, to the legal and financial considerations that can affect the transaction long after closing.",
     overview: [
@@ -470,8 +490,9 @@ export const practices: PracticeArea[] = [
     navLabel: "Wills & Estates",
     metaDescription:
       "Wills and estates counsel for planning and administration. Kaizen Law Professional Corporation, serving Ontario clients.",
+    tagline: "Planning for tomorrow. Protecting what matters today.",
     summary:
-      "Thoughtful planning and administration designed to protect what matters and clarify what comes next.",
+      "Thoughtful legal guidance in wills, powers of attorney, estate planning, probate applications, and estate administration, helping you protect your legacy, navigate important responsibilities, and provide peace of mind for those who matter most.",
     intro:
       "Estate planning is about more than preparing documents. It is about making thoughtful decisions about your future, your family, and the way your affairs will be managed when you are no longer able to manage them yourself.",
     overview: [
@@ -520,12 +541,10 @@ export function getPractice(slug: string): PracticeArea | undefined {
 
 export interface Lawyer {
   name: string;
-  role: "Founder" | "Co-Founder";
+  role: "Founding Partner" | "Co-Founder";
   monogram: string;
   jurisdiction: string;
-  /** One-line summary for compact cards. */
-  summary: string;
-  /** Full bio paragraphs for the profile. */
+  /** Full bio paragraphs, shown on the home cards and the People page. */
   bio: string[];
   /** Intended source for this lawyer's portrait. */
   photo: string;
@@ -536,15 +555,14 @@ export interface Lawyer {
 export const lawyers: Lawyer[] = [
   {
     name: "Gourav Sharma",
-    role: "Founder",
+    role: "Founding Partner",
     monogram: "GS",
     jurisdiction: "Ontario",
-    summary:
-      "A founding partner of Kaizen Law, Gourav focuses on criminal and family law, bringing a practical, personable approach to every matter.",
     bio: [
-      "Gourav Sharma is a founding partner of Kaizen Law, with a practice focused primarily on criminal and family law. He brings a practical and personable approach to his work, taking the time to understand each client's circumstances and objectives and providing clear, thoughtful advice throughout the legal process.",
-      "Gourav studied Criminology at York University before obtaining his law degree from the University of Leicester in the United Kingdom.",
-      "Outside of law, Gourav enjoys working out, running, and travelling.",
+      "Gourav Sharma is a founding partner of Kaizen Law, where his practice focuses on civil litigation, criminal defence, and real estate law.",
+      "Gourav believes that every client deserves to be heard, understood, and treated with respect. He recognizes that dealing with legal matters can be stressful and often comes with difficult decisions. That's why he takes the time to understand each client's situation, explain their options clearly, and provide practical advice tailored to their needs.",
+      "Whether defending someone facing criminal charges, helping resolve a dispute, or guiding a client through a personal or financial matter, Gourav approaches his work with careful preparation, determination, and a commitment to protecting his clients' interests. He values building genuine relationships with his clients and believes that trust, honest communication, and dedicated representation are at the heart of good legal service.",
+      "Outside of his legal practice, Gourav enjoys working out, running, and travelling.",
     ],
     photo: "/photos/gourav-sharma.jpg",
     photoReady: false,
@@ -554,12 +572,10 @@ export const lawyers: Lawyer[] = [
     role: "Co-Founder",
     monogram: "NT",
     jurisdiction: "Ontario",
-    summary:
-      "A co-founder of Kaizen Law, Nitika practises across real estate, wills and estates, business and corporate law, and family law.",
     bio: [
-      "Nitika Thapar is a co-founder of Kaizen Law, with a practice encompassing real estate, wills and estates, business and corporate law, and family law. She takes a thoughtful and detail-oriented approach to her practice, with a focus on understanding each client's circumstances and providing practical legal guidance tailored to their needs.",
-      "Nitika completed her undergraduate studies at the University of Waterloo, majoring in Legal Studies, before obtaining her law degree from the University of Leicester in the United Kingdom.",
-      "Outside of her legal practice, Nitika enjoys travelling, spending time with her dog, discovering new places to eat, and spending time with family and friends.",
+      "Nitika Thapar is a co-founder of Kaizen Law, where her practice focuses on business and corporate law, family law, real estate, and wills and estates.",
+      "Nitika believes that good legal representation begins with understanding the person behind the matter. She recognizes that every client has different circumstances, concerns, and goals, and takes the time to listen, understand their needs, and provide clear, practical advice. Whether helping someone purchase their first home, plan for their family's future, or navigate a challenging legal situation, she approaches each matter with care, attention to detail, and a commitment to protecting her clients' interests.",
+      "Outside of her legal practice, Nitika enjoys travelling, exploring new restaurants, spending time with her dog, and making memories with family and friends.",
     ],
     photo: "/photos/nitika-thapar.jpg",
     photoReady: false,

@@ -15,7 +15,7 @@ const crumbs = [
 export const metadata = buildMetadata({
   title: "Practice areas",
   description:
-    "Real estate, wills and estates, business, corporate, family law, criminal law, and notary services from Kaizen Law Professional Corporation.",
+    "Real estate, wills and estates, business and corporate law, family law, criminal law, civil litigation, and notary services from Kaizen Law Professional Corporation.",
   path: "/practice",
 });
 

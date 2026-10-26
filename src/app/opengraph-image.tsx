@@ -3,7 +3,7 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
 export const runtime = "nodejs";
-export const alt = "Kaizen Law — Clear counsel. Steady direction.";
+export const alt = "Kaizen Law — Your Matter. Our Commitment.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -69,7 +69,7 @@ export default async function OpengraphImage() {
               textTransform: "uppercase",
             }}
           >
-            Clear counsel. Steady direction.
+            Your Matter. Our Commitment.
           </div>
           <div style={{ width: 40, height: 1, background: GOLD }} />
         </div>

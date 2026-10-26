@@ -33,7 +33,7 @@ export function CtaBand({
           <div>
             <p className="max-w-md text-base leading-[1.75] text-cream/60">{note}</p>
             <div className="mt-9 flex flex-col gap-4 sm:mt-8 sm:flex-row sm:items-center sm:gap-5 [&>*]:w-full sm:[&>*]:w-auto">
-              <GoldButton href="/contact">Discuss your matter</GoldButton>
+              <GoldButton href="/contact">Request a Consultation</GoldButton>
               <a href={contact.emailHref} className="button button-ghost">
                 Email us
                 <span aria-hidden="true">+</span>

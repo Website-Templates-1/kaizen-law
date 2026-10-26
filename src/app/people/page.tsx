@@ -15,7 +15,7 @@ const crumbs = [
 export const metadata = buildMetadata({
   title: "Our people",
   description:
-    "Meet Gourav Sharma, founder, and Nitika Thapar, co-founder, of Kaizen Law Professional Corporation in St. Catharines.",
+    "Meet Gourav Sharma, founding partner, and Nitika Thapar, co-founder, of Kaizen Law Professional Corporation in St. Catharines.",
   path: "/people",
 });
 

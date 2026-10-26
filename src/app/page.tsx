@@ -10,6 +10,7 @@ import {
   about,
   contact,
   homeDisclaimer,
+  peopleIntro,
   philosophy,
   site,
   whyKaizen,
@@ -37,15 +38,15 @@ export default function HomePage() {
             Precision in practice <span>·</span> Ontario
           </p>
           <h1>
-            Clear counsel.
+            Your Matter.
             <br />
-            <em>Steady direction.</em>
+            <em>Our Commitment.</em>
           </h1>
           <p className="hero-intro">
-            Thoughtful, practical legal guidance for individuals, families, and
-            businesses.
+            Strategic legal advice. Dedicated representation. A commitment to
+            what matters most to you.
           </p>
-          <GoldButton href="/contact">Discuss your matter</GoldButton>
+          <GoldButton href="/contact">Request a Consultation</GoldButton>
         </div>
         <div className="hero-foot">
           <span>Kaizen / 01</span>
@@ -58,8 +59,7 @@ export default function HomePage() {
         <SectionIndex n="01" label={philosophy.eyebrow} />
         <div className="split-grid">
           <h2>
-            {philosophy.titleLead} <em>{philosophy.titleEm}</em>{" "}
-            {philosophy.titleRest}
+            {philosophy.title} <em>{philosophy.titleEm}</em>
           </h2>
           <div>
             <p className="lead">{philosophy.paragraphs[0]}</p>
@@ -106,7 +106,10 @@ export default function HomePage() {
             {whyKaizen.title} <em>{whyKaizen.titleEm}</em>
           </h2>
           <div>
-            <p className="lead">{whyKaizen.body}</p>
+            <p className="lead">{whyKaizen.paragraphs[0]}</p>
+            {whyKaizen.paragraphs.slice(1).map((para) => (
+              <p key={para}>{para}</p>
+            ))}
           </div>
         </div>
       </section>
@@ -116,12 +119,10 @@ export default function HomePage() {
         <SectionIndex n="04" label="Areas of practice" on="ink" />
         <div className="section-heading">
           <h2>
-            Law for the <em>whole picture.</em>
+            Comprehensive Legal Services.
+            <br />
+            <em>Personalized Attention.</em>
           </h2>
-          <p>
-            From a first home to a complex family matter, we bring focused
-            attention to the details that move your matter forward.
-          </p>
         </div>
         <PracticeList />
       </section>
@@ -131,15 +132,15 @@ export default function HomePage() {
         <SectionIndex n="05" label="The people behind the practice" />
         <div className="people-intro">
           <h2>
-            Personal attention.
+            {peopleIntro.title}
             <br />
-            <em>Professional perspective.</em>
+            <em>{peopleIntro.titleEm}</em>
           </h2>
-          <p>
-            Every matter is different. We believe the relationship between
-            lawyer and client should be direct, responsive, and grounded in
-            trust.
-          </p>
+          <div className="people-intro-copy">
+            {peopleIntro.paragraphs.map((para) => (
+              <p key={para}>{para}</p>
+            ))}
+          </div>
         </div>
         <LawyerCardsSwitch />
       </section>
@@ -161,21 +162,11 @@ export default function HomePage() {
           <div>
             <p className="lead">{contact.areasLead}</p>
             <p>
-              Our offices and client relationships span{" "}
+              Our office and client relationships span{" "}
               {contact.areas.map((area) => area.name).join(", ")}.
             </p>
             <TextLink href="/contact">Get in touch</TextLink>
           </div>
-        </div>
-        <div className="media-frame relative mt-14 aspect-[3/4] w-full sm:mt-16 sm:aspect-[16/9] lg:aspect-[21/9]">
-          <Image
-            src="/photos/toronto.jpg"
-            alt="The Toronto skyline at golden hour"
-            fill
-            sizes="100vw"
-            className="object-cover"
-            style={{ objectPosition: "center 12%" }}
-          />
         </div>
       </section>
 

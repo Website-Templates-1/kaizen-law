@@ -2,8 +2,8 @@ import { lawyers, type Lawyer } from "@/lib/site.config";
 
 /**
  * Home-page "meet the team" grid. The firm has chosen a text-only presentation,
- * so each card renders an initials mark, the lawyer's summary line, and role —
- * with no image slot.
+ * so each card renders an initials mark, the lawyer's role, and bio — with no
+ * image slot.
  */
 export function LawyerCardsSwitch() {
   return (
@@ -23,7 +23,11 @@ function TextCard({ lawyer }: { lawyer: Lawyer }) {
       </span>
       <p className="person-role">{lawyer.role}</p>
       <h3>{lawyer.name}</h3>
-      <p className="person-summary">{lawyer.summary}</p>
+      {lawyer.bio.map((para) => (
+        <p key={para} className="person-summary">
+          {para}
+        </p>
+      ))}
     </article>
   );
 }
