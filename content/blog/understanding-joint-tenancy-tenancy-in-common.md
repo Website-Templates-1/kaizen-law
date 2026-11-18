@@ -9,8 +9,9 @@ excerpt: >-
   This article outlines their implications for property ownership, especially in
   family and investment contexts.
 publishedAt: '2026-10-26'
+updatedAt: '2026-11-18'
 author: Kaizen Law Professional Corporation
-status: draft
+status: published
 faqs:
   - question: What is the main difference between joint tenancy and tenancy in common?
     answer: >-
