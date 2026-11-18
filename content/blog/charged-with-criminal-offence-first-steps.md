@@ -8,8 +8,9 @@ excerpt: >-
   Facing a criminal charge in Ontario? Learn your rights, the initial steps to
   take, and what to expect in the legal process.
 publishedAt: '2026-10-12'
+updatedAt: '2026-11-18'
 author: Kaizen Law Professional Corporation
-status: draft
+status: published
 faqs:
   - question: What is the first thing I should do if charged with a criminal offence?
     answer: >-
