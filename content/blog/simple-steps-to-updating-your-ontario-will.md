@@ -9,8 +9,9 @@ excerpt: >-
   outlines the essential steps to modify your Ontario will as life changes
   occur.
 publishedAt: '2026-11-02'
+updatedAt: '2026-11-23'
 author: Kaizen Law Professional Corporation
-status: draft
+status: published
 faqs:
   - question: How often should I update my will?
     answer: >-
